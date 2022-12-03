@@ -8,7 +8,7 @@
 
     <link rel="icon" href="icon.png">
     <link rel="stylesheet" href="css/style.css">
-    <!-- <script src="index.js" defer></script> -->
+
     <script src="https://kit.fontawesome.com/effd3867de.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -17,7 +17,10 @@
             <p>Type</p>
             <span>Moko</span>
         </div>
-        <a href="#">About</a>
+        <a href="#">
+            <i class="fa-solid fa-bug"></i>
+            <span class="tooltip">Report a bug</span>
+        </a>
     </nav>
     <main>
         <div class="statsContainer">
@@ -36,15 +39,30 @@
             <button class="reset">Reset</button>
         </div>
         <small><span>Note:</span> Start typing after clicking the <span>Start</span> button</small>
+        <small><span>-</span> Avoid using <span>Enter</span> and <span>Backspace</span> to avoid Errors</small>
+        <small>( currently under development )</small>
     </main>
 
     <!-- Modal Section -->
-    <div class="modalSection">
+    <div class="modalSection hideModal">
         <div class="modalContainer">
             <h2>Welcome to Type<span>Moko</span></h2>
             <h5>( Still in development stage )</h5>
             <i class="fa-solid fa-xmark"></i>
         </div>
+    </div>
+
+    <!-- Report bugs Container -->
+    <div class="reportsForm hideReport">
+        <i class="fa-regular fa-circle-xmark"></i>
+        <h2>Report a Bug</h2>
+        <form>
+            <label for="">Title</label>
+            <input type="text">
+            <label for="">Description</label>
+            <textarea id="bugDescription" cols="30" rows="10"></textarea>
+            <button>Submit</button>
+        </form>
     </div>
     
     <section>
@@ -62,11 +80,11 @@
     </section>
     <footer>
         <div class="creditsContainer">
-            <span>© TypeMoko, 2022</span>
+            <span>©2022 TypeMoko, All rights reserved.</span>
             <p>Website created by Bullet</p>
         </div>
         <div class="socials">
-            <a href="https://github.com/BulletOnli/TypeMoko" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://github.com/BulletOnli" target="_blank"><i class="fa-brands fa-github"></i></a>
             <a href="https://www.facebook.com/Solidbullet" target="_blank"><i class="fa-brands fa-facebook"></i></a>
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
         </div>

@@ -50,16 +50,33 @@ nav {
     }
 
     a {
-        font-size: 18px;
+        font-size: 20px;
         text-decoration: none;
         margin-right: 20px;
+        position: relative;
 
-        &:hover {
+        span {
+            width: max-content;
+            position: absolute;
+            left: -1.5rem;
+            bottom: -1rem;
+            margin: auto;
+            font-size: 10px;
+            font-weight: 500;
+            opacity: 0;
+        }
+
+        &:hover span {
+            opacity: 1;
+        }
+
+        i:hover {
             color: $orange;
-            scale: 1.02;
+            scale: 1.05;
             transition: 0.2s ease-in-out;
         }
     }
+
 }
 
 main {
@@ -113,6 +130,7 @@ main {
         width: 70rem;
         display: flex;
         justify-content: center;
+        margin-bottom: 20px;
 
         button {
             margin: 0 15px;
@@ -135,10 +153,10 @@ main {
     }
 
     small {
-        margin-top: 20px;
         font-weight: 500;
         color: $fontColor;
         letter-spacing: 1px;
+        margin: 2px 0;
 
         span {
             color: $orange;
@@ -210,6 +228,109 @@ main {
 }
 
 
+// Report BUgs 
+
+.reportsForm {
+    width: 25rem;
+    height: 34rem;
+    position: fixed;
+    top: -50rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lighten($color: black, $amount: 10);
+    border-radius: 10px;
+    border: 2px solid $orange;
+    padding: 1rem 3rem;
+    opacity: 0;
+
+    i {
+        position: absolute;
+        right: 17px;
+        font-size: 20px;
+        cursor: pointer;
+
+        &:hover {
+            color: $orange;
+            scale: 1.1;
+        }
+    }
+
+    h2 {
+        margin: 1rem 0 2rem 0;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        label {
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            font-size: 16px;
+            background-color: transparent;
+            border: 1px solid $lightGray;
+            border-radius: 6px;
+            outline: none;
+            padding: 5px 10px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            background-color: transparent;
+            border: 1px solid $lightGray;
+            border-radius: 6px;
+            outline: none;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            color: black;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 5px 0;
+            margin: 1rem 0 ;
+            background-color: $orange;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                scale: 1.02;
+                background-color: lighten($color: $orange, $amount: 10);
+            }
+
+            &:active {
+                scale: 0.99;
+            }
+        }
+    }
+}
+
+.showReport {
+    // display: none;
+    top: 0;
+    opacity: 1;
+    transition: 0.4s ease-in-out;
+}
+
+
+
 section {
     width: 100%;
     height: 92vh;
@@ -265,7 +386,7 @@ footer {
         width: fit-content;
         display: flex;
         flex-direction: column;
-        margin: 0 2.5rem;
+        margin: 0 2rem;
 
         span {
             font-size: 14px;
@@ -297,7 +418,5 @@ footer {
                 transition: 0.1s;
             }
         }
-
-
     }
 }

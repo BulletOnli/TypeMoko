@@ -12,8 +12,11 @@ const change = document.querySelector('.change')
 // Record Elements
 const table = document.querySelector('table')
 // Modal Elements
-const closeBtn = document.querySelector('.fa-xmark')
+const closeWelcome = document.querySelector('.fa-xmark')
 const modalSection = document.querySelector('.modalSection')
+const reportForm = document.querySelector('.reportsForm')
+const closeReport = document.querySelector('.fa-circle-xmark')
+const reportBtn = document.querySelector('.fa-bug')
 
 // timer
 let paused = true;
@@ -24,6 +27,7 @@ let currentTime = 0
 let index = 0 // counting index
 let errors = 0 // Error count
 let correct = 0
+let guideIndex = 0
 
 let span; // words container that has been splitted
 
@@ -31,11 +35,12 @@ start.addEventListener('click', () => {
     inputEl.focus()
     
     if (paused) {
-        start.style.opacity = 0.5
         paused = false
+        start.style.opacity = 0.5
+        change.style.opacity = 0.5
         startTime = Date.now() - currentTime
         setInterval(timer)
-    }  
+    }
 })
 
 reset.addEventListener('click', () => {
@@ -43,8 +48,10 @@ reset.addEventListener('click', () => {
 })
 
 change.addEventListener('click', () => {
-    sentenceContainer.innerHTML = ''
-    randomText()
+    if (paused) {
+        sentenceContainer.innerHTML = ''
+        randomText()
+    }
 })
 
 // Manually focus the input element
@@ -64,8 +71,8 @@ function randomText() {
 function checkInput() {
     inputEl.addEventListener('input', e => {
         span = sentenceContainer.querySelectorAll("span")
+        
         const inputs = e.target.value.split("")
-
         if (inputs[index] == span[index].innerText) {
                 span[index].style.color = '#FE9700'
                 correct++
@@ -73,6 +80,11 @@ function checkInput() {
             span[index].style.color = 'red'
             errors++
             errorEl.textContent = `Errors: ${errors}`
+        }
+
+        if (inputs.length < span.length) {
+            addGuide()
+            removeGuide()
         }
 
         index++
@@ -130,14 +142,38 @@ function resetGame() {
     index = 0
     errors = 0
     correct = 0
+    guideIndex = 0
     start.style.opacity = 1
+    change.style.opacity = 0.5
     errorEl.textContent = `Errors: 0`
     sentenceContainer.innerHTML = ''
-
     randomText()
 }
 
-// Close button for modal
-closeBtn.addEventListener('click', () => {
+// Close button for welcome modal
+closeWelcome.addEventListener('click', () => {
     modalSection.classList.add('hideModal')
 })
+
+reportBtn.addEventListener('click', () => {
+    reportForm.classList.add('showReport')
+})
+
+closeReport.addEventListener('click', () => {
+    reportForm.classList.remove('showReport')
+})
+
+
+
+function addGuide() {
+    if (!paused) {
+        guideIndex++
+        span[guideIndex].style.border = '1px solid white'
+    }
+}
+
+function removeGuide() {
+    if (!paused) {
+        span[guideIndex - 1].style.border = 'none'
+    }
+}
