@@ -1,6 +1,5 @@
 import { texts } from "./comp/sentences.js"
 
-// const texts = ['hello world this is me and myself rovie i love you po', 'sfsdfsdfsdfwerwrwr']
 const inputEl = document.querySelector('.input')
 const sentenceContainer = document.querySelector('.sentences') // sentence element
 // Timer Elements
@@ -12,7 +11,7 @@ const reset = document.querySelector('.reset')
 const change = document.querySelector('.change')
 // Record Elements
 const table = document.querySelector('table')
-
+// Modal Elements
 const closeBtn = document.querySelector('.fa-xmark')
 const modalSection = document.querySelector('.modalSection')
 
@@ -25,7 +24,6 @@ let currentTime = 0
 let index = 0 // counting index
 let errors = 0 // Error count
 let correct = 0
-let totalclicks = 0
 
 let span; // words container that has been splitted
 
@@ -68,25 +66,21 @@ function checkInput() {
         span = sentenceContainer.querySelectorAll("span")
         const inputs = e.target.value.split("")
 
-        if (inputs.length <= span.length) {
-            if (inputs[index] == span[index].innerText) {
+        if (inputs[index] == span[index].innerText) {
                 span[index].style.color = '#FE9700'
                 correct++
-                totalclicks++
-            } else {    
-                span[index].style.color = 'red'
-                errors++
-                totalclicks++
-                errorEl.textContent = `Errors: ${errors}`
-            }
-            index++
+        } else {    
+            span[index].style.color = 'red'
+            errors++
+            errorEl.textContent = `Errors: ${errors}`
         }
-        
+
+        index++
+
         if (inputs.length == span.length) {
             renderRecord()
             resetGame()
         }
-
     })
 }
 
@@ -143,6 +137,7 @@ function resetGame() {
     randomText()
 }
 
+// Close button for modal
 closeBtn.addEventListener('click', () => {
     modalSection.classList.add('hideModal')
 })
