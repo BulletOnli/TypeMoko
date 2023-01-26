@@ -122,6 +122,7 @@ function renderRecord() {
     <td>${seconds}s</td>
     <td>${errors}</td>
     <td>${accuracy}%</td>
+    <td>-</td>
     `
     table.appendChild(tr)
 }
@@ -144,7 +145,7 @@ function resetGame() {
     correct = 0
     guideIndex = 0
     start.style.opacity = 1
-    change.style.opacity = 0.5
+    change.style.opacity = 1
     errorEl.textContent = `Errors: 0`
     sentenceContainer.innerHTML = ''
     randomText()
