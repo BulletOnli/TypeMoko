@@ -25,9 +25,11 @@ let seconds = 30;
 let index = 0; // counting index
 let errors = 0; // Error count
 let correct = 0;
+let wordCount = 0;
 let guideIndex = 0; // the guide when typing
 
 let span; // words container that has been splitted
+let timeInterval;
 
 start.addEventListener("click", () => {
     inputEl.focus();
@@ -36,14 +38,18 @@ start.addEventListener("click", () => {
         paused = false;
         start.style.opacity = 0.5;
         change.style.opacity = 0.5;
-        // startTime = Date.now() - currentTime;
-        // setInterval(timer);
         timer();
+
+        // show the text cursor / guide
+        sentenceContainer.querySelectorAll("span")[0].className =
+            "inputed-letter";
     }
 });
 
 reset.addEventListener("click", () => {
-    resetGame();
+    if (!paused) {
+        resetGame();
+    }
 });
 
 change.addEventListener("click", () => {
@@ -77,9 +83,11 @@ function checkInput() {
         const inputs = e.target.value.split("");
         if (inputs[index] == span[index].innerText) {
             span[index].style.color = "#FE9700";
+            // span[index].className = "inputed-letter";
             correct++;
         } else {
             span[index].style.color = "red";
+            // span[index].className = "inputed-letter";
             errors++;
             errorEl.textContent = `Errors: ${errors}`;
         }
@@ -89,6 +97,8 @@ function checkInput() {
             if (event.key === "Backspace") {
                 event.preventDefault();
                 return false;
+            } else if (event.key === " ") {
+                wordCount++;
             }
         };
 
@@ -109,14 +119,13 @@ checkInput();
 
 function timer() {
     if (!paused) {
-        let countdown = setInterval(() => {
+        timeInterval = setInterval(() => {
             seconds--;
             timerEl.textContent = `Time: ${seconds}s`;
 
             if (seconds == 0) {
                 renderRecord();
                 resetGame();
-                clearInterval(countdown);
             }
         }, 1000);
     }
@@ -131,7 +140,7 @@ function renderRecord() {
     tr.innerHTML += `
     <td>${errors}</td>
     <td>${accuracy}%</td>
-    <td>-</td>
+    <td>${wordCount * 2} WPM</td>
     `;
     table.appendChild(tr);
 }
@@ -144,6 +153,7 @@ function resetGame() {
     paused = true;
     seconds = 30;
     timerEl.textContent = `Time: 30s`;
+    clearInterval(timeInterval);
 
     // Others
     index = 0;
@@ -173,12 +183,12 @@ closeReport.addEventListener("click", () => {
 function addGuide() {
     if (!paused) {
         guideIndex++;
-        span[guideIndex].style.border = "1px solid white";
+        span[guideIndex].className = "inputed-letter";
     }
 }
 
 function removeGuide() {
     if (!paused) {
-        span[guideIndex - 1].style.border = "none";
+        span[guideIndex - 1].className = " ";
     }
 }
