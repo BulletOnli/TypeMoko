@@ -50,6 +50,7 @@ reset.addEventListener("click", () => {
     if (!paused) {
         resetGame();
     }
+    return;
 });
 
 change.addEventListener("click", () => {
