@@ -159,6 +159,7 @@ function resetGame() {
     index = 0;
     errors = 0;
     correct = 0;
+    wordCount = 0;
     guideIndex = 0;
     start.style.opacity = 1;
     change.style.opacity = 1;
