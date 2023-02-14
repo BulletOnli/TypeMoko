@@ -1,96 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TypeMoko</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TypeMoko</title>
 
-    <link rel="icon" href="icon.png">
-    <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="icon.png" />
+        <link rel="stylesheet" href="style.css" />
 
-    <script src="https://kit.fontawesome.com/effd3867de.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <nav>
-        <div class="logoContainer">
-            <p>Type</p>
-            <span>Moko</span>
-        </div>
-        <a href="#">
-            <i class="fa-solid fa-bug"></i>
-            <span class="tooltip">Report a bug</span>
-        </a>
-    </nav>
-    <main>
-        <div class="statsContainer">
-            <p class="timer">Time: 0s</p>
-            <p class="errorEl">Error: 0</p>
-        </div>
-        <div class="sentences">
-            <!-- random texts -->
+        <script
+            src="https://kit.fontawesome.com/effd3867de.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <nav>
+            <div class="logoContainer">
+                <p>Type</p>
+                <span>Moko</span>
+            </div>
+            <a href="#">
+                <i class="fa-solid fa-bug"></i>
+                <span class="tooltip">Report a bug</span>
+            </a>
+        </nav>
+        <main>
+            <div class="statsContainer">
+                <p class="timer">Time: 30s</p>
+                <p class="errorEl">Error: 0</p>
+            </div>
+            <div class="sentences">
+                <!-- random texts -->
+            </div>
+
+            <input type="text" class="input" />
+
+            <div class="controls">
+                <button class="change">Change</button>
+                <button class="start">Start</button>
+                <button class="reset">Reset</button>
+            </div>
+            <small
+                ><span>Note:</span> Start typing after clicking the
+                <span>Start</span> button</small
+            >
+            <small
+                ><span>-</span> <span>Backspace</span> is not allowed! It's not
+                a <span>bug</span>:></small
+            >
+        </main>
+
+        <!-- Modal Section -->
+        <div class="modalSection">
+            <div class="modalContainer">
+                <h2>Welcome to Type<span>Moko</span></h2>
+                <h5>
+                    Improve your typing skills with our fun and challenging
+                    exercises. Test your speed, accuracy, and endurance with our
+                    timed typing tests and practice your skills with our diverse
+                    range of typing drills. Our site is easy to use, and our
+                    exercises are designed to help you build your typing skills
+                    quickly and efficiently.
+                </h5>
+                <small>(Still in development stage)</small>
+                <i class="fa-solid fa-xmark"></i>
+            </div>
         </div>
 
-        <input type="text" class="input">
-        
-        <div class="controls">
-            <button class="change">Change</button>
-            <button class="start">Start</button>
-            <button class="reset">Reset</button>
+        <!-- Report bugs Container -->
+        <div class="reportsForm">
+            <i class="fa-regular fa-circle-xmark"></i>
+            <h2>Report a Bug</h2>
+            <form>
+                <label for="">Title</label>
+                <input type="text" />
+                <label for="">Description</label>
+                <textarea id="bugDescription" cols="30" rows="10"></textarea>
+                <button>Submit</button>
+            </form>
         </div>
-        <small><span>Note:</span> Start typing after clicking the <span>Start</span> button</small>
-        <small><span>-</span> Avoid using <span>Enter</span> and <span>Backspace</span> to avoid Errors</small>
-        <small>( currently under development )</small>
-    </main>
 
-    <!-- Modal Section -->
-    <div class="modalSection">
-        <div class="modalContainer">
-            <h2>Welcome to Type<span>Moko</span></h2>
-            <h5>( Still in development stage )</h5>
-            <i class="fa-solid fa-xmark"></i>
-        </div>
-    </div>
+        <section>
+            <span>Records</span>
+            <div class="tableContainer"></div>
+            <table>
+                <tr>
+                    <th>Error</th>
+                    <th>Accuracy</th>
+                    <th>WPM</th>
+                </tr>
+            </table>
+            <p class="notice">No Record's yet</p>
+        </section>
+        <footer>
+            <div class="creditsContainer">
+                <span>©2022 TypeMoko, All rights reserved.</span>
+                <p>Website created by Bullet</p>
+            </div>
+            <div class="socials">
+                <a href="https://github.com/BulletOnli" target="_blank"
+                    ><i class="fa-brands fa-github"></i
+                ></a>
+                <a href="https://www.facebook.com/Solidbullet" target="_blank"
+                    ><i class="fa-brands fa-facebook"></i
+                ></a>
+                <a href="https://ayo.so/bulletonli" target="_blank"
+                    ><i class="fa-brands fa-instagram"></i
+                ></a>
+            </div>
+        </footer>
 
-    <!-- Report bugs Container -->
-    <div class="reportsForm">
-        <i class="fa-regular fa-circle-xmark"></i>
-        <h2>Report a Bug</h2>
-        <form>
-            <label for="">Title</label>
-            <input type="text">
-            <label for="">Description</label>
-            <textarea id="bugDescription" cols="30" rows="10"></textarea>
-            <button>Submit</button>
-        </form>
-    </div>
-    
-    <section>
-        <span>Records</span>
-        <div class="tableContainer"></div>
-        <table>
-            <tr>
-                <th>Time</th>
-                <th>Error</th>
-                <th>Accuracy</th>
-                <th>WPM</th>
-            </tr>
-        </table>
-        <p class="notice">No Record's yet</p>
-    </section>
-    <footer>
-        <div class="creditsContainer">
-            <span>©2022 TypeMoko, All rights reserved.</span>
-            <p>Website created by Bullet</p>
-        </div>
-        <div class="socials">
-            <a href="https://github.com/BulletOnli" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.facebook.com/Solidbullet" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-    </footer>
-    
-
-    <script src="index.js" type="module"></script>
-</body>
+        <script src="index.js" type="module"></script>
+    </body>
 </html>
