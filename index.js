@@ -61,7 +61,7 @@ change.addEventListener("click", () => {
 });
 
 // Manually focus the input element
-sentenceContainer.addEventListener("click", () => {
+document.addEventListener("click", () => {
     if (!paused) {
         inputEl.focus();
     }
